@@ -1,0 +1,56 @@
+{
+  "name": "dupaco-web",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "yarn check-types && vite build",
+    "preview": "vite preview",
+    "prettier": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "prettier:check": "npx prettier --check .",
+    "lint": "eslint ./ --fix",
+    "lint:check": "eslint ./",
+    "check-types": "tsc --noemit",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "cy:headless": "cypress run",
+    "cy": "cypress open",
+    "cy:ci": "start-server-and-test 'yarn dev' http-get://localhost:3000 'yarn cy:headless'",
+    "generate:api": "npx @rtk-query/codegen-openapi openapi-config.ts && prettier --write ./src/features/api/endpoints/**/*.ts && eslint --fix ./src/features/api/endpoints/**/*.ts",
+    "ci:local": "yarn check-types && yarn lint:check && yarn prettier:check && yarn test && yarn cy:ci"
+  },
+  "engines": {
+    "node": "v16.14.2"
+  },
+  "dependencies": {
+    
+    "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.26.1",
+    "react-redux": "^8.0.0",
+    "vite-tsconfig-paths": "^3.4.1"
+  },
+  "devDependencies": {
+    "@rtk-query/codegen-openapi": "^1.0.0-alpha.1",
+    "@types/mocha": "^9.1.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "babel-plugin-styled-components": "^2.0.7",
+    "cypress": "^9.5.4",
+    "dotenv": "^16.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.5.1",
+    "jest-emotion": "^11.0.0",
+    "prettier": "^2.6.2",
+    "prettier-eslint": "^13.0.0",
+    "prettier-eslint-cli": "^5.0.1",
+    "shelljs": "^0.8.5",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.2",
+    "vite-plugin-svgr": "^2.0.0"
+  }
+}
